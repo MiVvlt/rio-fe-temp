@@ -1,0 +1,19 @@
+<ion-list class="event event--holiday" (click)="itemClicked()">
+  <ion-item class="item item-trns event-item" lines="none" >
+    <div class="event-item-title">
+      {{holidayItem.holidayType}}
+    </div>
+    <div class="event-item-time">
+                        <span class="event-item-time__from">
+                        {{holidayItem.start | date : 'hh:mm'}}
+                        </span>
+      -
+      <span class="event-item-time__to">
+                        {{holidayItem.end | date : 'hh:mm'}}
+                        </span>
+    </div>
+
+
+  </ion-item>
+
+</ion-list>

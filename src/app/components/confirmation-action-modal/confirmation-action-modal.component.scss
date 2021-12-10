@@ -1,0 +1,13 @@
+.confirm-button-group {
+  display: flex;
+
+  ion-button {
+    flex: 1;
+  }
+}
+
+.confirm-message {
+  margin-top: 50%;
+  text-align: center;
+  transform: translateY(-50%);
+}

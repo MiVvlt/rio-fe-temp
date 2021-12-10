@@ -1,0 +1,28 @@
+.calendar {
+  &__current-week {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__current-week__text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__current-week__last-week-toggle, &__current-week__next-week-toggle {
+    cursor: pointer;
+  }
+
+  &__current-week__next-week-toggle {
+    padding: 13px 80px 5px 0;
+    font-size: 30px;
+  }
+
+  &__current-week__last-week-toggle {
+    padding: 13px 0 5px 80px;
+    font-size: 30px;
+  }
+}

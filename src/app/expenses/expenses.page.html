@@ -1,0 +1,261 @@
+<ion-header>
+  <ion-toolbar [color]="'primary'">
+    <ion-buttons slot="start" class="menu-button">
+      <ion-icon
+        icon="menu"
+        class="ion-padding-start menu-icon"
+        (click)="showMenu()"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>{{'EXPENSES_PAGE.TITLE' | translate}}</ion-title>
+  </ion-toolbar>
+  <ion-item class="range-buttons" lines="none">
+    <ion-button
+      color="primary"
+      (click)="setRange('TODAY')"
+      style="font-size: 11px;"
+    >
+      {{'EXPENSES_PAGE.RANGE_BUTTONS.TODAY' | translate}}
+    </ion-button>
+    <ion-button
+      color="primary"
+      (click)="setRange('WEEK')"
+      style="font-size: 11px;"
+    >
+      {{'EXPENSES_PAGE.RANGE_BUTTONS.WEEK' | translate}}
+    </ion-button>
+    <ion-button
+      color="primary"
+      (click)="setRange('MONTH')"
+      style="font-size: 11px;"
+    >
+      {{'EXPENSES_PAGE.RANGE_BUTTONS.MONTH' | translate}}
+    </ion-button>
+  </ion-item>
+
+  <ion-item style="display: inline-block; width: 50%;">
+    <ion-label
+      ><strong style="font-size: 12px;"
+        >{{('GENERAL.FROM' | translate) |uppercase}}</strong
+      ></ion-label
+    >
+    <ion-datetime
+      [(ngModel)]="fromDate"
+      (ionChange)="dateChanged()"
+      monthShortNames="jan, feb, maart, apr, mei, jun, jul, aug, sept, okt, nov, dec"
+      [doneText]="'GENERAL.CONFIRM' | translate"
+      [cancelText]="'GENERAL.CANCEL' | translate"
+    ></ion-datetime>
+  </ion-item>
+  <ion-item style="display: inline-block; width: 50%;">
+    <ion-label
+      ><strong style="font-size: 12px;"
+        >{{('GENERAL.TO' | translate) | uppercase}}</strong
+      ></ion-label
+    >
+    <ion-datetime
+      [(ngModel)]="toDate"
+      (ionChange)="dateChanged()"
+      monthShortNames="jan, feb, maart, apr, mei, jun, jul, aug, sept, okt, nov, dec"
+      [doneText]="'GENERAL.CONFIRM' | translate"
+      [cancelText]="'GENERAL.CANCEL' | translate"
+    ></ion-datetime>
+  </ion-item>
+  <ion-segment (ionChange)="tabChanged($event)" [value]="activeTab">
+    <ion-segment-button value="EXPENSES">
+      <ion-label>{{'EXPENSES_PAGE.TABS.EXPENSES' | translate}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="DISTANCE">
+      <ion-label>{{'EXPENSES_PAGE.TABS.DISTANCE' | translate}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="dateChanged($event)">
+    <ion-refresher-content
+      refreshingText="{{'GENERAL.LOADING' | translate}}"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-list style="flex: 1;" *ngIf="activeTab === 'DISTANCE'">
+    <ion-item *ngIf="!distances?.length || !totalKM">
+      <ion-label class="ion-text-center"
+        >{{'EXPENSES_PAGE.NO_DISTANCE_FOR_DATES' | translate}}</ion-label
+      >
+    </ion-item>
+
+    <div *ngFor="let distance of distances">
+      <ion-card *ngIf="distance.totalKm">
+        <ion-card-content>
+          <ion-card-title
+            >{{distance?.date | date : 'EEEE dd LLLL yyyy'}}</ion-card-title
+          >
+          <ion-grid class="w-100">
+            <ion-row *ngIf="distance?.kmShopping">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_SHOPPING' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text
+                  >{{distance?.kmShopping | number :'0.00'}} km</ion-text
+                >
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmCar">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_AUTO' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text>{{distance?.kmCar | number :'0.00'}} km</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmCarpool">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_CARPOOL' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text>{{distance?.kmCarpool | number :'0.00'}} km</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmMotor">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_MOTO' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text>{{distance?.kmMotor | number :'0.00'}} km</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmScooter">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_BROMFIETS' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text>{{distance?.kmScooter | number :'0.00'}} km</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmPubicTransport">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_OPENBAAR_VERVOER' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text
+                  >{{distance?.kmPubicTransport | number :'0.00'}} km</ion-text
+                >
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmBike">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_FIETS' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text>{{distance?.kmBike | number :'0.00'}} km</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="distance?.kmLeasingBike">
+              <ion-col>
+                <ion-text
+                  ><strong
+                    >{{'DISTANCE.EDIT_LEASINGFIETS' | translate}}</strong
+                  ></ion-text
+                >
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <ion-text
+                  >{{distance?.kmLeasingBike | number :'0.00'}} km</ion-text
+                >
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  <ion-list style="flex: 1;" *ngIf="activeTab === 'EXPENSES'">
+    <ion-item-sliding *ngFor="let expense of expenses">
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="confirmDeleteExpense(expense)">
+          {{'GENERAL.DELETE' | translate}}
+        </ion-item-option>
+        <!--<ion-item-option color="primary"
+                                 (click)="editExpense(expense)">
+                    {{'GENERAL.EDIT' | translate}}
+                </ion-item-option>-->
+      </ion-item-options>
+      <ion-item>
+        <ion-label style="flex: 3.9;">
+          <ion-card-title
+            >{{('EXPENSES.TYPES.' + expense.type) | translate}}</ion-card-title
+          >
+          <ion-card-subtitle
+            ><small
+              >{{expense.date | date : 'EEEE dd LLLL yyyy'}}</small
+            ></ion-card-subtitle
+          >
+        </ion-label>
+        <ion-label>
+          <p class="w-25 ion-text-right">
+            <strong>{{expense.value | currency : 'EUR'}}</strong>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item *ngIf="!expenses.length">
+      <ion-label class="ion-text-center"
+        >{{'EXPENSES_PAGE.NO_EXPENSES_FOR_DATES' | translate}}</ion-label
+      >
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-item color="primary">
+    <ion-label style="flex: 1.6;">
+      <h2>
+        {{(('EXPENSES_PAGE.TOTAL.' + activeTab) | translate) | uppercase}}
+      </h2>
+      <p>
+        <small
+          >{{('EXPENSES_PAGE.SELECTED_DATE' | translate) | uppercase}}</small
+        >
+      </p>
+    </ion-label>
+    <ion-label style="text-align: right;" class="ion-color-light">
+      <h5>
+        <strong *ngIf="activeTab === 'EXPENSES'"
+          >{{total | currency : 'EUR'}}</strong
+        >
+        <strong *ngIf="activeTab === 'DISTANCE'"
+          >{{totalKM | number}} km</strong
+        >
+      </h5>
+    </ion-label>
+  </ion-item>
+</ion-footer>

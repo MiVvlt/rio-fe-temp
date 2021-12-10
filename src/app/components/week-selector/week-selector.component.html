@@ -1,0 +1,13 @@
+<div class="ion-padding week-selector">
+    <div class="week-selector__last" appDebounceClick (debounceClick)="emitDebounceLastWeekClicked()" (click)="setWeek(false)">
+        <ion-icon icon="arrow-dropleft"></ion-icon>
+    </div>
+
+    <div class="week-selector__text">Week {{getWeekNumber(dates?.start)}}
+        ({{dates?.start | date : 'yyyy'}})
+    </div>
+
+    <div class="week-selector__next" appDebounceClick (debounceClick)="emitDebounceNextWeekClicked()" (click)="setWeek(true)">
+        <ion-icon icon="arrow-dropright"></ion-icon>
+    </div>
+</div>

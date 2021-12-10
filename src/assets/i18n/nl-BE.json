@@ -1,0 +1,354 @@
+{
+  "CALENDAR_ITEM": {
+    "CARE_GOAL": "Doel van de zorg",
+    "CARETAKER_ATTITUDE": "Houding zorgverlener",
+    "CHANGE_IMPOSED": "Gewijzigd door Permanentie",
+    "CONFIRM_COMMUNICATED_FALSE": "Bevestig dat de klant is verwittigd van deze beurt.",
+    "CONFIRM_COMMUNICATED_TRUE": "Bevestig dat de klant niet is verwittigd van deze beurt.",
+    "CONTACT_INFO": "Contactgegevens",
+    "CONTACT_MOBILE": "Mobiel",
+    "CONTACT_EMAIL": "Email",
+    "CONTACT_COMMENT": "Opmerking",
+    "CONTACT_PERSON": "Contactpersonen",
+    "CONTACT_PHONE": "Telefoonnummer",
+    "CUSTOMER_NOTIFIED": "Klant is verwittigd",
+    "NEEDS_DESCRIPTION": "Noodomschrijving",
+    "REASON_CHANGED": "Reden wijziging: ",
+    "REASON": "Reden: ",
+    "REASON_CHANGED_USER": "Reden wijziging (gebruiker): ",
+    "DESCRIPTION": "Omschrijving: ",
+    "RELATIONSHIP_WITH_CLIENT": "Relatie met klant",
+    "REMARKS": "Praktische aandachtspunten",
+    "SHOW_DETAILS_BUTTON": "Klantfiche",
+    "TASKS": "Taken",
+    "USER_MODIFIED": "Gewijzigd door jou",
+    "MEELOPER_TITLE": "Coach / Meeloper(s)",
+    "MEELOPER_TYPE": {
+      "COACH": "Coach",
+      "TRAINEE": "Meeloper"
+    }
+  },
+  "CALENDAR_PAGE": {
+    "BUTTONS": {
+      "EXPENSES": "Onkosten beheren",
+      "KMS": "Km's ingeven",
+      "SUBMIT_ALL": "Valideer alle items",
+      "TRAVEL_TIME": "Reistijd ingeven"
+    },
+    "LOADING": "Agenda ophalen",
+    "NO_PLANNED": "Geen geplande items voor huidige datum",
+    "TITLE": "Mijn agenda",
+    "WEEK": {
+      "CURRENT": "Huidige week",
+      "NEXT": "Volgende week",
+      "PREVIOUS": "Vorige week"
+    }
+  },
+  "CHANGE_NOTIFICATION": {
+    "DISMISS": "Later",
+    "LABEL": "Bericht van wijziging",
+    "NEW": "Nieuw",
+    "OLD": "Oud",
+    "SHOW": "Toon",
+    "TYPE": {
+      "CARE": "Zorgbeurt",
+      "MEDICAL": "Medische zorgbeurt"
+    },
+    "WITH": "met"
+  },
+  "CLIENTS_PAGE": {
+    "BUTTONS": {
+      "COMMUNICATE_ALL": "Klant verwittigd"
+    },
+    "PICK_CLIENT": "Zoek een klant",
+    "SEARCH_PLACEHOLDER": "Naam klant",
+    "TITLE": "Klant agenda"
+  },
+  "COMMUNICATE_CLIENT": {
+    "SUBTITLE": "Vink de beurten uit waarvoor je de klant niet wil verwittigen",
+    "TITLE": "Klant verwittigd (bulk)"
+  },
+  "CONFIRMATION_MESSAGES": {
+    "DELETE_CALENDAR_SESSION": "Bent u zeker dat u deze hulpbeurt wil verwijderen?",
+    "DELETE_TRAVEL_SESSION": "Bent u zeker dat u deze reistijd wil verwijderen?",
+    "DELETE_EXPENSE": "Bent u zeker dat u deze onkost wil verwijderen?",
+    "DELETE_CALENDAR_SESSION_REASON": "Geef een reden op om deze sessie te verwijderen.",
+    "SESSION_VALIDATED_SUCCESSFULLY": "Sessie succesvol gevalideerd.",
+    "SUCCESFULLY_CHANGED_COMMUNICATED": "Klant verwittigd werd aangepast.",
+    "SUCCESFULLY_REQUESTED_DELETION": "Aanvraag tot verwijderen succesvol verzonden.",
+    "TRAVEL_TIME_SUCCESS": "Reistijd succesvol opgeslagen."
+  },
+  "DAYS": {
+    "FRIDAY": "Vrijdag",
+    "MONDAY": "Maandag",
+    "SATURDAY": "Zaterdag",
+    "SUNDAY": "Zondag",
+    "THURSDAY": "Donderdag",
+    "TUESDAY": "Dinsdag",
+    "WEDNESDAY": "Woensdag"
+  },
+  "DISTANCE": {
+    "EDIT_AUTO": "Auto",
+    "EDIT_SHOPPING": "Boodschappen",
+    "EDIT_AUTO_PLACEHOLDER": "0 km",
+    "EDIT_CARPOOL": "Carpool",
+    "EDIT_CARPOOL_PLACEHOLDER": "0 km",
+    "EDIT_BROMFIETS": "Bromfiets",
+    "EDIT_BROMFIETS_PLACEHOLDER": "0 km",
+    "EDIT_LEASINGFIETS": "Leasing fiets",
+    "EDIT_LEASINGFIETS_PLACEHOLDER": "0 km",
+    "EDIT_OPENBAAR_VERVOER": "Openbaar vervoer",
+    "EDIT_OPENBAAR_VERVOER_PLACEHOLDER": "0 km",
+    "EDIT_MOTO": "Motorfiets",
+    "EDIT_MOTO_PLACEHOLDER": "0 km",
+    "EDIT_FIETS": "Fiets",
+    "EDIT_TE_VOET": "Te voet",
+    "EDIT_FIETS_PLACEHOLDER": "0 km",
+    "EDIT_TE_VOET_PLACEHOLDER": "0 km",
+    "TYPE_PLACEHOLDER": "Type",
+    "ENTER_KMS": "Geef km's in",
+    "KMS_AUTO": "Km's Auto",
+    "KMS_CARPOOL": "Km's carpool",
+    "KMS_BROMFIETS": "Km's bromfiets",
+    "KMS_MOTO": "Km's Motorfiets",
+    "AMOUNT_PLACEHOLDER": "Aantal km's",
+    "KMS_OPENBAAR_VERVOER": "Kosten Openbaar vervoer",
+    "AMOUNT_PUBLIC_TRANSPORT_PLACEHOLDER": "Bedrag",
+    "KMS_FIETS": "Km's fiets",
+    "KMS_TE_VOET": "Km's te voet",
+    "KMS_SHOPPING": "Km's boodschappen",
+    "KMS_LEASINGFIETS": "Km's leasing fiets",
+    "KMS_SCOOTER": "Km's bromfiets",
+    "KMS_WALK": "Km's wandelen",
+    "KMS_PUBLIC_TRANSPORT": "Km's openbaar vervoer",
+    "KMS_BIKE": "Km's fiets",
+    "TITLE": "Kilometers ingeven"
+  },
+  "EDIT_ABSENCE_ITEM": {
+    "CHOOSE": "Kies het type afwezigheid",
+    "CURRENT": "Huidige type",
+    "TITLE": "Type afwezigheid wijzigen",
+    "TYPES_PLACEHOLDER": "Afwezigheden"
+  },
+  "EDIT_CALENDAR_ITEM": {
+    "AS_PLANNED": "Gepland op :",
+    "DURATION_LESS_THAN_15_MIN": "Duurtijd moet langer dan 15 minuten zijn.",
+    "ALREADY_VALIDATED": "Item is al gevalideerd wijzigen aanbrengen lukt nu niet meer.",
+    "EDIT_DURATION": "Duurtijd wijzigen",
+    "EDIT_KMS_SHOPPING": "KM's boodschappen wijzigen",
+    "KM_SHOPPING": "km boodschappen",
+    "TITLE": "Prestatie",
+    "UNKNOWN_ERROR": "Onbekende fout",
+    "PENDING_CHANGE_REQUEST": "Er is een openstaande wijziging voor dit agenda item.",
+    "START_TIME_AFTER_END_TIME": "De eindtijd moet na de starttijd zijn.",
+    "NO_CHANGES": "Geen wijzigingen om te bevestigen.",
+    "REASON_FILLED_IN_ON_EMPTY_DURATION": "Reden kan alleen worden toegevoegd bij een wijziging van tijd.",
+    "CUSTOMER_NOTIFIED_FILLED_IN_ON_EMPTY_DURATION": "Klant verwittigd kan alleen worden aangepast bij een wijziging van tijd."
+  },
+  "ERROR_MESSAGES": {
+    "GENERIC": "Onbekende fout opgetreden.",
+    "NOT_FOUND": "Pagina niet gevonden. (404)",
+    "UNAUTHORIZED": "Niet bevoegd om deze actie uit te voeren.",
+    "OVERLAP_ERROR": "Overlappende items kunnen niet gevalideerd worden, gelieve aanpassingen te maken zodat deze items niet overlappen en opnieuw proberen.",
+    "KMS_OVERIGE_HULPBEURT_NOT_ALLOWED": "Kilometers voor type 'Overige hulpbeurt' zijn niet toegestaan.",
+    "OVERLAP_ABSENCE_ERROR": "Dit item overlapt met een afwezigheid, gelieve uw agenda aan te passen en opnieuw te valideren of forceer een validatie."
+  },
+  "EXPENSES_PAGE": {
+    "TITLE": "Overzicht onkosten",
+    "EDIT": "Onkost bewerken",
+    "SELECT_DATES": "Selecteer datums",
+    "TABS": {
+      "EXPENSES": "Onkosten",
+      "DISTANCE": "Kilometers"
+    },
+    "TOTAL": {
+      "EXPENSES": "Totaal onkosten",
+      "DISTANCE": "Totaal kilometers"
+    },
+    "SELECTED_DATE": "(voor geselecteerde datum)",
+    "NO_EXPENSES_FOR_DATES": "Geen onkosten voor geselecteerde datums",
+    "NO_DISTANCE_FOR_DATES": "Geen kilometers voor geselecteerde datums",
+    "RANGE_BUTTONS": {
+      "TODAY": "Vandaag",
+      "WEEK": "Huidige week",
+      "MONTH": "Huidige maand"
+    }
+  },
+  "EXPENSES": {
+    "EXPENSES_IN_FUTURE": "Er kunnen geen onkosten gemaakt worden in de toekomst",
+    "EXPENSES_NO_TYPE": "Er is geen type aangeduid.", 
+    "NEW": "Nieuwe onkost toevoegen",
+    "NO_EXPENSES": "Nog geen onkosten ingegeven",
+    "REMOVE_SUCCESS_MESSAGE": "Onkost verwijderd",
+    "SUBMIT": "Onkost toevoegen",
+    "SUBMIT_SUCCESS_MESSAGE": "Onkosten succesvol doorgegeven",
+    "TITLE": "Beheer Onkosten",
+    "DATE": {
+      "LABEL": "Datum"
+    },
+    "TYPES": {
+      "LABEL": "Type onkost",
+      "ON_CALL": "Wachtvergoeding",
+      "OTHER": "Andere",
+      "PARKING": "Parkeerkosten",
+      "PLACEHOLDER": "Selecteer type",
+      "PUBLIC_TRANSPORT": "Openbaar vervoer kosten",
+      "ROSTER_DISTURBANCE_12": "Roosterverstoring 12",
+      "ROSTER_DISTURBANCE_15": "Roosterverstoring 15",
+      "ROSTER_DISTURBANCE_6": "Roosterverstoring 6",
+      "CLOTHING": "Schoenvergoeding",
+      "VACCINATION": "Griepvaccin"
+    },
+    "UNKNOWN_ERROR": "Onbekende fout",
+    "VALUE": {
+      "LABEL": "Bedrag",
+      "PLACEHOLDER": "€ 0,00"
+    }
+  },
+  "GENERAL": {
+    "ADDRESS": "Adres",
+    "APPLY": "Toepassen",
+    "CALL": "Bellen",
+    "CANCEL": "Annuleren",
+    "CHANGE_REQUESTED": "Wijziging aangevraagd",
+    "CLEAR": "Wissen",
+    "CLIENT": "Klant",
+    "CLOSE": "Sluiten",
+    "COMMUNICATED": "Klant verwittigd",
+    "CONFIRM": "Bevestig",
+    "CUSTOMER_ADDRESS": "Klant Adres",
+    "DELETE": "Verwijderen",
+    "DETAILS": "Details",
+    "DURATION": "Duur",
+    "EDIT": "Bewerken",
+    "EMPLOYEE": "Verzorger",
+    "FROM": "van",
+    "FORCE": "Forceer",
+    "HOUR": "uur",
+    "HOURS": "uren",
+    "LOADING": "Laden...",
+    "DATA_LOADING": "Data wordt geladen...",
+    "MARK_ALL_AS_READ": "Markeer alles als gelezen",
+    "MINUTES": "minuten",
+    "MOBILE": "Mobiel",
+    "MAIL": "Email",
+    "NAME": "Naam",
+    "NO": "nee",
+    "NO_NOTIFICATIONS": "Geen meldingen",
+    "NOAH_ADDRESS": "NOAH Adres",
+    "NOT_COMMUNICATED": "Klant niet verwittigd",
+    "NOT_SPECIFIED": "Geen info",
+    "NOTIFICATIONS_POPOVER_TITLE": "Berichten",
+    "PHONE": "Telefoon",
+    "READ": "Gelezen",
+    "REASON": "Reden",
+    "REASON_PLACEHOLDER": "Vul hier een reden in.",
+    "REQUEST_BY_CUSTOMER": "Klant is verwittigd?",
+    "ROUTE": "Route",
+    "SAVE": "Opslaan",
+    "SUBMIT": "Verzenden",
+    "TO": "tot",
+    "VALIDATE": "Valideren",
+    "YES": "ja"
+  },
+  "HELP_MENU": {
+    "EMERGENCY_SERVICES": "Nooddienst bellen",
+    "IT": "IT help desk bellen",
+    "PERMANENCE": "Permanentie bellen"
+  },
+  "MENU": {
+    "AGENDA": "Mijn agenda",
+    "CLIENT_AGENDA": "Klanten agenda",
+    "EXPENSES": "Onkosten & kilometers",
+    "HELP": "Hulp nodig",
+    "LOGOUT": "Afmelden",
+    "SETTINGS": "Instellingen",
+    "TEAM_AGENDA": "Team agenda"
+  },
+  "ROSTER_DISTURBANCE": {
+    "TYPE_PLACEHOLDER": "Reden afwijking uurrooster"
+  },
+  "TRANSPORT_TYPES": {
+    "PLACEHOLDER": "Transport type",
+    "BROMFIETS": "(Motor)fiets",
+    "AUTO": "Auto",
+    "CARPOOL": "Carpool"
+  },
+  "SESSION_STATUS": {
+    "CHANGED": "Gewijzigd",
+    "DEFINITE": "Definitief gepland",
+    "DELETE_REQUEST_PENDING": "Verwijdering aangevraagd",
+    "LOCKED": "Vergrendeld",
+    "NEW": "Nieuw, niet definitief gepland",
+    "REQUEST_PENDING": "Wijziging aangevraagd",
+    "TRAVEL_REQUEST_PENDING": "Reistijd aangevraagd",
+    "VALIDATED": "Gevalideerd"
+  },
+  "SESSION_TYPE": {
+    "AFWEZIGHEID": "Afwezigheid",
+    "HULPBEURT": "Hulpbeurt",
+    "MEELOPERTAAK": "Meeloper taak",
+    "NOAH": "NOAH",
+    "NOAH_VERVOER": "NOAH vervoer",
+    "OPEN_UUR": "Open Plaats",
+    "OVERIGE_HULPBEURT": "Overige Hulpbeurt",
+    "REISTIJD": "Reistijd",
+    "VERVOER": "Vervoer",
+    "NOAH_KLANT": "Noah afspraak"
+  },
+  "SETTINGS_PAGE": {
+    "LANGUAGE_LABEL": "Taal",
+    "NUMBER_PERMANENCE_LABEL": "Nummer permanentie",
+    "NUMBER_PERMANENCE_PLACEHOLDER": "05 555 55 55",
+    "SELECT_LANGUAGE": "Selecteer taal",
+    "SUCCESSFULLY_SAVED": "Wijzigingen opgeslagen",
+    "TITLE": "Instellingen"
+  },
+  "TEAM_PAGE": {
+    "CHOOSE_TEAM_MEMBERS_PLACEHOLDER": "Selecteer",
+    "ENTIRE_TEAM": "Volledig team",
+    "PICK_TEAM_MEMBERS": "Selecteer teamgenoten",
+    "TITLE": "TEAM AGENDA"
+  },
+  "TRAVEL_TIME": {
+    "BEGIN": "Begin",
+    "DURATION": "Duur",
+    "EDIT_BEGIN": "Vertrektijd",
+    "EDIT_BEGIN_PLACEHOLDER": "Selecteer",
+    "EDIT_DURATION": "Duur",
+    "EDIT_DURATION_PLACEHOLDER": "0 minuten",
+    "END": "Einde",
+    "ENTER_TRAVEL_TIME": "Geef uw reistijd in",
+    "TITLE": "Reistijd ingeven",
+    "TRAVEL_TIME": "Reistijd",
+    "TRAVEL_TIME_FOR": "Reistijd voor"
+  },
+  "VALIDATE_ALL": {
+    "CONFIRM": "Valideer sessies",
+    "NOT_VALIDATABLE": "Niet valideerbaar",
+    "CHECK_OVERLAPPING": "controleer of het item overlapt",
+    "OVERLAPPING_ABSENCE": "Overlapt met afwezigheid",
+    "OVERLAPPING_THIS_ABSENCE": "Deze afwezigheid overlapt met andere beurt",
+    "OVERLAPPING_ABSENCE_MESSAGE": "Volgende hulpbeurten kunnen worden gevalideerd maar overlappen met een afwezigheid, bevestig om deze te valideren:\n",
+    "END": "Einde: ",
+    "START": "Start: ",
+    "SUBTITLE": "De volgende prestaties zullen worden verstuurd om te valideren:",
+    "TITLE": "Bulk validatie"
+  },
+  "VALIDATE": {
+    "AFWEZIGHEID": "Valideren Afwezigheid",
+    "HULPBEURT": "Valideren Hulpbeurt",
+    "OVERIGE_HULPBEURT": "Valideren Overige Hulpbeurt",
+    "REISTIJD": "Valideren Reistijd",
+    "NOAH": "Valideren NOAH Taak",
+    "MEELOPER_TAAK": "Valideren Hulpbeurt"
+  },
+  "EDIT": {
+    "AFWEZIGHEID": "Bewerken Afwezigheid",
+    "HULPBEURT": "Bewerken Hulpbeurt",
+    "OVERIGE_HULPBEURT": "Bewerken Overige Hulpbeurt",
+    "REISTIJD": "Bewerken Reistijd",
+    "NOAH": "Bewerken NOAH Taak",
+    "MEELOPER_TAAK": "Bewerken Hulpbeurt"
+  }
+}

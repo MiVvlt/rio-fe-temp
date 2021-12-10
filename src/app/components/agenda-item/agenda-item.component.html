@@ -1,0 +1,194 @@
+<ion-list
+  class="event event--{{sessionEvent?.status}}"
+  [ngClass]="{
+                'event__short-event' :sessionEvent?.shortItem,
+                'absence' : sessionEvent?.type === 'AFWEZIGHEID',
+                'absence--VALIDATED' : (sessionEvent?.type === 'AFWEZIGHEID' && sessionEvent.status === 'VALIDATED') }"
+  (click)="agendaItemClicked()"
+>
+  <ion-item class="item item-trns event-item" lines="none">
+    <div
+      class="event-item-title event-item-title__session"
+      *ngIf="sessionEvent?.type === 'HULPBEURT' || sessionEvent?.type === 'MEELOPERTAAK' || sessionEvent?.type === 'NOAH_VERVOER' && !sessionEvent?.isNoahMeeloperTaak"
+    >
+      {{sessionEvent?.client?.fullName | lowercase}}
+    </div>
+
+    <div
+      class="event-item-title event-item-title__type"
+      *ngIf="
+                            sessionEvent?.type === 'OPEN_UUR'
+                             || sessionEvent?.type === 'AFWEZIGHEID'
+                             || sessionEvent?.type === 'REISTIJD'"
+    >
+      {{('SESSION_TYPE.' + sessionEvent?.type) | translate}}
+    </div>
+
+    <div
+      class="event-item-title event-item-title__sessionType"
+      *ngIf="
+                            sessionEvent?.type === 'OVERIGE_HULPBEURT'"
+    >
+      {{(sessionEvent?.sessionType)}}
+    </div>
+
+    <div
+      class="event-item-title event-item-title__noah"
+      *ngIf="sessionEvent?.type === 'NOAH' || sessionEvent?.type === 'NOAH_KLANT' || sessionEvent?.isNoahMeeloperTaak"
+    >
+      {{(sessionEvent?.noah)}}
+    </div>
+
+    <div
+      class="event-item-time"
+      [ngClass]="{'linetrough': sessionEvent?.requestedEnd || sessionEvent?.requestedStart}"
+    >
+      <span class="event-item-time__from">
+        {{sessionEvent?.startTime | date : 'HH:mm'}}
+      </span>
+      -
+      <span class="event-item-time__to">
+        {{sessionEvent?.endTime | date : 'HH:mm'}}
+      </span>
+    </div>
+  </ion-item>
+  <div
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="sessionEvent?.requestedEnd || sessionEvent?.requestedStart"
+  >
+    <div class="event-item-time" style="margin-left: auto; margin-right: 18px;">
+      <span class="event-item-time__from">
+        {{sessionEvent?.requestedStart | date : 'HH:mm'}}
+      </span>
+      -
+      <span class="event-item-time__to">
+        {{sessionEvent?.requestedEnd | date : 'HH:mm'}}
+      </span>
+    </div>
+  </div>
+
+  <div
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="showDuration || showDate"
+  >
+    <div class="date-duration">
+      <div *ngIf="showDate" class="date-duration__date">
+        {{sessionEvent?.start | date : 'mediumDate'}}
+      </div>
+      <div *ngIf="showDuration" class="date-duration__duration">
+        <strong>{{'GENERAL.DURATION' | translate}}: </strong>
+        {{sessionEvent?.getDurationAsString()}}
+      </div>
+    </div>
+  </div>
+
+  <ion-item
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="sessionEvent?.type === 'NOAH'"
+  >
+    <ion-label>{{(sessionEvent?.serviceType)}}</ion-label>
+  </ion-item>
+
+  <ion-item
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="sessionEvent?.isNoahMeeloperTaak"
+  >
+    <ion-label>{{'SESSION_TYPE.MEELOPERTAAK' | translate}}</ion-label>
+  </ion-item>
+
+  <ion-item
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="sessionEvent?.type === 'AFWEZIGHEID'"
+  >
+    <ion-label><small>{{sessionEvent?.comment}}</small></ion-label>
+  </ion-item>
+
+  <ion-item
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="sessionEvent?.type !== 'AFWEZIGHEID'"
+  >
+    <ion-label>
+      <small
+        >(<span
+          id="session-status"
+          [translate]="'SESSION_STATUS.' + sessionEvent?.status"
+        ></span
+        >)</small
+      >
+    </ion-label>
+    <ion-icon
+      id="session-icon"
+      [icon]="getIcon(sessionEvent?.status)"
+    ></ion-icon>
+  </ion-item>
+  <ion-item
+    class="item item-trns event-item"
+    lines="none"
+    *ngIf="sessionEvent?.followerTasks?.length"
+  >
+    <span style="margin-left: auto;">
+      <ion-badge color="none">
+        <ion-icon icon="walk" class="mr-1"></ion-icon>
+      </ion-badge>
+    </span>
+  </ion-item>
+  <ion-item class="item item-trns event-item" lines="none">
+    <ion-badge
+      [color]="sessionEvent?.clientCommunicated ? 'success' : 'danger'"
+      id="clientCommunicatedBadge"
+      *ngIf="(['HULPBEURT', 'MEELOPERTAAK', 'NOAH_KLANT'].indexOf(sessionEvent?.type) !== -1) && !sessionEvent?.isNoahMeeloperTaak"
+    >
+      <small
+        id="clientCommunicatedText"
+        [translate]="sessionEvent?.clientCommunicated ? 'GENERAL.COMMUNICATED' : 'GENERAL.NOT_COMMUNICATED'"
+      >
+      </small>
+    </ion-badge>
+
+    <span *ngIf="sessionEvent?.showShoppingKm" style="margin-left: auto;">
+      <ion-badge color="none">
+        <div
+          style="display: flex; align-items: center;"
+          *ngIf="sessionEvent?.type !== 'REISTIJD'"
+        >
+          <ion-icon icon="cart" class="mr-1"></ion-icon>
+          <span class="session-distance-badge"
+            >{{sessionEvent?.distance?.shopping ?
+            sessionEvent?.distance?.shopping : 0}} km</span
+          >
+        </div>
+      </ion-badge>
+    </span>
+  </ion-item>
+
+  <ion-item
+    class="item item-trns event-item"
+    color="info"
+    lines="none"
+    *ngIf="showReasonChanged && sessionEvent?.reasonChanged"
+  >
+    <div class="w-100">
+      <small>
+        <strong [translate]="'CALENDAR_ITEM.REASON_CHANGED'"></strong>
+        <p class="p-0 m-0">{{(sessionEvent?.reasonChanged)}}</p>
+      </small>
+    </div>
+  </ion-item>
+
+  <ion-item
+    class="item item-trns event-item"
+    color="info"
+    lines="none"
+    *ngIf="showReasonChanged && sessionEvent?.serviceType && sessionEvent?.type === 'OVERIGE_HULPBEURT'"
+  >
+    <div class="w-100">
+      <p class="p-0 m-0">{{(sessionEvent?.serviceType)}}</p>
+    </div>
+  </ion-item>
+</ion-list>

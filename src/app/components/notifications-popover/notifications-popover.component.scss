@@ -1,0 +1,20 @@
+.notifications-wrapper {
+  height: 70vh;
+  padding: 50px 0;
+
+  ion-header {
+    position: absolute;
+    top: 0;
+  }
+
+  ion-list {
+    box-sizing: border-box;
+    overflow: auto;
+    height: 100%;
+  }
+
+  ion-footer {
+    position: absolute;
+    bottom: 0;
+  }
+}

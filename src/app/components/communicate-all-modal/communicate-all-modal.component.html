@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/menu/calendar" (click)="cancel()"></ion-back-button>
+        </ion-buttons>
+        <ion-title [translate]="'COMMUNICATE_CLIENT.TITLE'"></ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item>
+        <h4 [translate]="'COMMUNICATE_CLIENT.SUBTITLE'"></h4>
+    </ion-item>
+    <ion-list>
+        <ion-item *ngFor="let item of list">
+            <ion-label>
+                <h5 *ngIf="item.client.fullName.length > 1"><strong>{{(('GENERAL.CLIENT' | translate) | uppercase) + ': '}}</strong> {{item.client.fullName}}</h5>
+                <h5 *ngIf="item.employee.fullName.length > 1"><strong>{{(('GENERAL.EMPLOYEE' | translate) | uppercase) + ': '}}</strong> {{item.employee.fullName}}</h5>
+                <h5><ion-badge [color]="'primary'">{{('SESSION_TYPE.' + item.type) | translate}}</ion-badge></h5>
+                <p>
+                    <strong [translate]="'VALIDATE_ALL.START'"></strong>
+                    {{item.startTime | date: 'mediumDate'}} {{item.startTime | date: 'HH:mm'}}
+                </p>
+                <p>
+                    <strong [translate]="'VALIDATE_ALL.END'"></strong>
+                    {{item.endTime | date: 'mediumDate'}} {{item.endTime | date: 'HH:mm'}}
+                </p>
+            </ion-label>
+            <ion-item lines="none">
+                <ion-checkbox [(ngModel)]="item.clientCommunicated"></ion-checkbox>
+            </ion-item>
+        </ion-item>
+    </ion-list>
+
+    <div class="confirm-button-group">
+        <ion-button id="cancel-button" color="secondary" (click)="cancel()" [translate]="'GENERAL.CANCEL'"></ion-button>
+        <ion-button id="submit-button" color="primary" (click)="confirm()" [translate]="'GENERAL.CONFIRM'"></ion-button>
+    </div>
+</ion-content>
+

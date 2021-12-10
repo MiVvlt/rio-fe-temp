@@ -1,0 +1,33 @@
+<ion-menu content-id="content">
+    <ion-header>
+        <!--        <app-menu-header -->
+        <!--                avatarUrl="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg"-->
+        <!--                name="{{user?.givenName}} {{user?.familyName}}">-->
+        <!--        </app-menu-header>-->
+
+        <app-menu-header
+                name="{{name}}">
+        </app-menu-header>
+
+    </ion-header>
+    <ion-content>
+        <div *ngFor="let p of pages">
+            <ion-menu-toggle>
+                <app-menu-item [routerLink]="p.url" [active]="p.url" routerDirection="root"
+                               label="{{p.title | translate}}"
+                               [icon]="p.icon" *ngIf="p.visible"></app-menu-item>
+            </ion-menu-toggle>
+        </div>
+        <ion-item (click)="showHelpMenu($event)" lines="none" style="padding: 6px 0;">
+            <ion-icon icon="call" class="mr-1"></ion-icon>
+            <ion-label translate="MENU.HELP"></ion-label>
+        </ion-item>
+        <!--<ion-item (click)="logout()">
+            <ion-icon icon="log-out" color="primary" class="mr-1"></ion-icon>
+            <ion-label color="primary" translate="MENU.LOGOUT"></ion-label>
+        </ion-item>-->
+    </ion-content>
+</ion-menu>
+<ion-router-outlet id="content">
+
+</ion-router-outlet>

@@ -1,0 +1,98 @@
+<ion-header *ngIf="calendarEvent">
+  <ion-toolbar [color]="'primary'">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title [translate]="'EDIT.' + calendarEvent?.type"></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item lines="none">
+      <app-agenda-item
+        [sessionEvent]="calendarEvent"
+        [showDuration]="true"
+        [showDate]="true"
+        [showReasonChanged]="true"
+        [noActions]="true"
+        class="w-100"
+      >
+      </app-agenda-item>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="calendarEvent?.userModified">
+    <ion-item>
+      {{ 'CALENDAR_ITEM.USER_MODIFIED' | translate}}
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item [lines]="'none'">
+      <ion-label>
+        <app-duration-input
+          [start]="calendarEvent?.start"
+          [end]="calendarEvent?.end"
+          [fill]="'outline'"
+          expand="block"
+          size="default"
+          (change)="durationChanged($event)"
+          color="primary"
+          translatePlaceholder="EDIT_CALENDAR_ITEM.EDIT_DURATION"
+        >
+        </app-duration-input>
+      </ion-label>
+    </ion-item>
+
+    <div class="ion-padding-vertical" *ngIf="calendarEvent?.showShoppingKm">
+      <ion-item [lines]="'none'">
+        <ion-label
+          color="primary"
+          [translate]="'EDIT_CALENDAR_ITEM.EDIT_KMS_SHOPPING'"
+        ></ion-label>
+        <ion-input
+          slot="end"
+          class="ion-text-end"
+          [placeholder]="'DISTANCE.AMOUNT_PLACEHOLDER' | translate"
+          (ionFocus)="fieldFocus()"
+          [clearInput]="true"
+          type="number"
+          *ngIf="calendarEvent"
+          #distanceInput
+          [(ngModel)]="calendarEvent.shoppingKm"
+          name="km-input"
+          id="km-input"
+        ></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-item
+      *ngIf="['REISTIJD', 'OVERIGE_HULPBEURT'].indexOf(calendarEvent?.type) === -1"
+    >
+      <ion-label
+        position="floating"
+        translate="GENERAL.REQUEST_BY_CUSTOMER"
+      ></ion-label>
+      <ion-checkbox
+        rows="4"
+        [(ngModel)]="customerNotified"
+        (ionChange)="onCustomerNotifiedChange()"
+      ></ion-checkbox>
+      <ion-label position="floating" translate="GENERAL.REASON"></ion-label>
+      <ion-textarea
+        rows="8"
+        *ngIf="calendarEvent"
+        [(ngModel)]="calendarEvent.pendingChange.reasonRequest"
+        placeholder="{{ 'GENERAL.REASON_PLACEHOLDER' | translate}}"
+        required
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer slot="fixed" style="padding: 0 5px;">
+  <ion-button
+    color="primary"
+    expand="block"
+    size="default"
+    (click)="submit()"
+    translate="GENERAL.CONFIRM"
+  ></ion-button>
+</ion-footer>

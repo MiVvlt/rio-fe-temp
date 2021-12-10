@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-menu-button (click)="showMenu()"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{'CLIENTS_PAGE.TITLE' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-no-margin">
+    <ion-card class="ion-no-margin">
+        <ion-card-header class="ion-no-margin" style="padding-bottom: 0;">
+            <ion-card-title class="ion-no-margin">
+                <h5 class="ion-no-margin" translate="CLIENTS_PAGE.PICK_CLIENT"></h5>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding ion-no-margin">
+            <ion-searchbar [placeholder]="'CLIENTS_PAGE.SEARCH_PLACEHOLDER' | translate"
+                           [cancelButtonText]="'GENERAL.CLEAR' | translate"
+                           showCancelButton="focus"
+                           debounce="400"
+                           [(ngModel)]="name"
+                           (ionChange)="nameChanged()">
+            </ion-searchbar>
+            <ion-list *ngIf="clients.length">
+                <ion-item *ngFor="let client of clients" (click)="clientSelected(client)">
+                    {{client.name}} {{client.surname}}
+                </ion-item>
+            </ion-list>
+
+
+            <app-week-selector
+                    *ngIf="activeCalendar.client"
+                    [dates]="activeWeek"
+                    (debounceLastWeekClicked)="weekChange()"
+                    (debounceNextWeekClicked)="weekChange()">
+            </app-week-selector>
+
+            <ion-item *ngIf="activeCalendar.client && !activeCalendar?.calendar?.length">
+                <div class="ion-text-center">
+                    {{'CALENDAR_PAGE.NO_PLANNED' | translate}}
+                </div>
+            </ion-item>
+
+
+            <div class="day" *ngFor="let item of activeCalendar?.calendar">
+                <div class="day-label">
+                    <div class="day-label__value">{{item.start | date : 'EEEE dd MMM '}}</div>
+                    <div class="day-label__divider"></div>
+                </div>
+                <app-client-agenda-item *ngFor="let appointment of item.appointments" [sessionEvent]="appointment"
+                                        (showDetails)="showEventDetails($event)"
+                                        (toggleCommunicated)="toggleCommunicated($event)">
+                </app-client-agenda-item>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-fab *ngIf="isDeviceOnline() && activeCalendar?.calendar?.length" vertical="bottom" horizontal="end"
+             slot="fixed">
+        <ion-fab-button>
+            <ion-icon icon="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+            <div class="fab-list-item" (click)="communicateAll()">
+                <ion-chip color="primary">
+                    <ion-label>{{'CLIENTS_PAGE.BUTTONS.COMMUNICATE_ALL' | translate}}</ion-label>
+                </ion-chip>
+
+                <ion-fab-button color="primary">
+                    <ion-icon name="chatbubbles"></ion-icon>
+                </ion-fab-button>
+            </div>
+        </ion-fab-list>
+    </ion-fab>
+</ion-content>

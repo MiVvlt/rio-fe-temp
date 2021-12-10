@@ -1,0 +1,337 @@
+{
+  "CALENDAR_ITEM": {
+    "CARE_GOAL": "Care goal",
+    "CARETAKER_ATTITUDE": "Careworker attitude",
+    "CHANGE_IMPOSED": "Modified by Permanentie",
+    "CONFIRM_COMMUNICATED_FALSE": "Confirm to change session to 'Client notified'",
+    "CONFIRM_COMMUNICATED_TRUE": "Confirm to change session to 'Client not notified'",
+    "CONTACT_INFO": "Contact info",
+    "CONTACT_MOBILE": "Cellphone",
+    "CONTACT_EMAIL": "Email",
+    "CONTACT_PERSON": "Contact person",
+    "CONTACT_COMMENT": "Comment",
+    "CONTACT_PHONE": "Contact phone",
+    "REASON_CHANGED": "Reason changed: ",
+    "REASON": "Reason: ",
+    "REASON_CHANGED_USER": "Reason Changed (user): ",
+    "DESCRIPTION": "Description: ",
+    "CUSTOMER_NOTIFIED": "Customer has been notified",
+    "NEEDS_DESCRIPTION": "Requirements",
+    "RELATIONSHIP_WITH_CLIENT": "Relationship with client",
+    "REMARKS": "Remarks",
+    "SHOW_DETAILS_BUTTON": "Customer notes",
+    "TASKS": "Tasks",
+    "USER_MODIFIED": "Modified by you",
+    "MEELOPER_TITLE": "Coach / assistants",
+    "MEELOPER_TYPE": {
+      "COACH": "Coach",
+      "TRAINEE": "Assistant"
+    }
+  },
+  "CALENDAR_PAGE": {
+    "BUTTONS": {
+      "EXPENSES": "Manage expenses",
+      "KMS": "Enter kms",
+      "SUBMIT_ALL": "Validate all items",
+      "TRAVEL_TIME": "Enter travel time"
+    },
+    "LOADING": "Loading calendar",
+    "NO_PLANNED": "No planned items for current date",
+    "TITLE": "My Calendar",
+    "WEEK": {
+      "CURRENT": "Current week",
+      "NEXT": "Next week",
+      "PREVIOUS": "Last week"
+    }
+  },
+  "CHANGE_NOTIFICATION": {
+    "DISMISS": "Dismiss",
+    "LABEL": "Change notification",
+    "NEW": "New",
+    "OLD": "Old",
+    "SHOW": "Show",
+    "TYPE": {
+      "CARE": "Care session",
+      "MEDICAL": "Medical session"
+    },
+    "WITH": "with"
+  },
+  "CLIENTS_PAGE": {
+    "BUTTONS": {
+      "COMMUNICATE_ALL": "communicated client (bulk)"
+    },
+    "PICK_CLIENT": "Pick a client",
+    "SEARCH_PLACEHOLDER": "Client name",
+    "TITLE": "Client agenda"
+  },
+  "COMMUNICATE_CLIENT": {
+    "SUBTITLE": "Select items where client is notified",
+    "TITLE": "Client notified (batch)"
+  },
+  "CONFIRMATION_MESSAGES": {
+    "DELETE_CALENDAR_SESSION": "Are you sure you want to delete this item?",
+    "DELETE_CALENDAR_SESSION_REASON": "Provide reason for deleting this item",
+    "SESSION_VALIDATED_SUCCESSFULLY": "'Successfully validated session'",
+    "SUCCESFULLY_CHANGED_COMMUNICATED": "Successfully updated client notified.",
+    "SUCCESFULLY_REQUESTED_DELETION": "Successfully requested deletion",
+    "TRAVEL_TIME_SUCCESS": "Travel time successfully submitted."
+  },
+  "DAYS": {
+    "FRIDAY": "Friday",
+    "MONDAY": "Monday",
+    "SATURDAY": "Saturday",
+    "SUNDAY": "Sunday",
+    "THURSDAY": "Thursday",
+    "TUESDAY": "Tuesday",
+    "WEDNESDAY": "Wednesday"
+  },
+  "DISTANCE": {
+    "EDIT_AUTO": "car",
+    "EDIT_SHOPPING": "Shopping",
+    "EDIT_AUTO_PLACEHOLDER": "0 km",
+    "EDIT_CARPOOL": "Carpool",
+    "EDIT_CARPOOL_PLACEHOLDER": "0 km",
+    "EDIT_BROMFIETS": "Moped",
+    "EDIT_BROMFIETS_PLACEHOLDER": "0 km",
+    "EDIT_MOTO": "Motorcycle",
+    "EDIT_MOTO_PLACEHOLDER": "0 km",
+    "EDIT_FIETS": "Cycle",
+    "EDIT_LEASINGFIETS": "Leasing cycle",
+    "EDIT_TE_VOET": "By foot",
+    "EDIT_FIETS_PLACEHOLDER": "0 km",
+    "EDIT_LEASINGFIETS_PLACEHOLDER": "0 km",
+    "EDIT_TE_VOET_PLACEHOLDER": "0 km",
+    "ENTER_KMS": "Enter km's",
+    "TYPE_PLACEHOLDER": "Type",
+    "AMOUNT_PLACEHOLDER": "Km amount",
+    "KMS_AUTO": "Km's car",
+    "KMS_CARPOOL": "Km's carpool",
+    "KMS_BROMFIETS": "Km's moped",
+    "KMS_MOTO": "Km's motorcycle",
+    "KMS_FIETS": "Km's cycle",
+    "KMS_LEASINGFIETS": "Km's leasing cycle",
+    "KMS_TE_VOET": "Km's by foot",
+    "KMS_SHOPPING": "Km's shopping",
+    "KMS_SCOOTER": "Km's scooter",
+    "KMS_WALK": "Km's walk",
+    "KMS_PUBLIC_TRANSPORT": "Public transport",
+    "AMOUNT_PUBLIC_TRANSPORT_PLACEHOLDER": "Amount",
+
+    "KMS_BIKE": "Km's bike",
+    "TITLE": "Enter kilometers"
+  },
+  "EDIT_ABSENCE_ITEM": {
+    "CHOOSE": "Choose absence type",
+    "CURRENT": "Current type",
+    "TITLE": "Edit absence type",
+    "TYPES_PLACEHOLDER": "Absences"
+  },
+  "EDIT_CALENDAR_ITEM": {
+    "AS_PLANNED": "Did this performance proceed as planned?",
+    "DURATION_LESS_THAN_15_MIN": "Duration should be longer than 15 minutes.",
+    "ALREADY_VALIDATED": "Item has already been validated, making changes is no longer possible.",
+    "EDIT_DURATION": "EDIT DURATION",
+    "EDIT_KMS_SHOPPING": "Edit km's shopping",
+    "KM_SHOPPING": "km shopping",
+    "TITLE": "Performance",
+    "UNKNOWN_ERROR": "Unknown error",
+    "PENDING_CHANGE_REQUEST": "Pending change request for agenda item.",
+    "START_TIME_AFTER_END_TIME": "The end time must be after the start time.",
+    "NO_CHANGES": "No changes to confirm.",
+    "REASON_FILLED_IN_ON_EMPTY_DURATION": "Reason can only be added with a change of time.",
+    "CUSTOMER_NOTIFIED_FILLED_IN_ON_EMPTY_DURATION": "Customer notified can only be adjusted in case of a change of time."
+  },
+  "ERROR_MESSAGES": {
+    "GENERIC": "Generic error occured.",
+    "NOT_FOUND": "Page not found. (404)",
+    "UNAUTHORIZED": "Unauthorized to perform this action.",
+    "OVERLAP_ERROR": "Overlapping items can not be validated, please make adjustments and try again.",
+    "KMS_OVERIGE_HULPBEURT_NOT_ALLOWED": "Kilometers for type 'Other assistance' are not allowed.",
+    "OVERLAP_ABSENCE_ERROR": "This item overlaps with an absence, please make adjustments or force validation."
+  },
+  "EXPENSES_PAGE": {
+    "TABS": {
+      "EXPENSES": "Expences",
+      "DISTANCE": "Kilometers"
+    },
+    "NO_EXPENSES_FOR_DATES": "No expenses for selected dates",
+    "NO_DISTANCE_FOR_DATES": "No kilometers for selected dates",
+    "TITLE": "Overview expenses",
+    "TOTAL": "Total expenses",
+    "SELECTED_DATE": "(for selected date)"
+  },
+  "EXPENSES": {
+    "EXPENSES_IN_FUTURE": "Expenses can't be incurred in the future",
+    "EXPENSES_NO_TYPE": "No type is specified.",
+    "NEW": "Add new expense",
+    "NO_EXPENSES": "No expenses yet",
+    "REMOVE_SUCCESS_MESSAGE": "Expense removed",
+    "SUBMIT": "Submit expense",
+    "SUBMIT_SUCCESS_MESSAGE": "Successfully submitted expense",
+    "TITLE": "Manage expenses",
+    "TYPES": {
+      "LABEL": "Expense type",
+      "ON_CALL": "Stand-by allowance",
+      "OTHER": "Other",
+      "PARKING": "Parking expenses",
+      "PLACEHOLDER": "Select type",
+      "PUBLIC_TRANSPORT": "Public transport expenses",
+      "ROSTER_DISTURBANCE_12": "Roster disturbance 12",
+      "ROSTER_DISTURBANCE_15": "Roster disturbance 15",
+      "ROSTER_DISTURBANCE_6": "Roster disturbance 6",
+      "CLOTHING": "Shoe expenses",
+      "VACCINATION": "Flu vaccine"
+    },
+    "UNKNOWN_ERROR": "Unknown error",
+    "VALUE": {
+      "LABEL": "Amount",
+      "PLACEHOLDER": "€ 0,00"
+    }
+  },
+  "GENERAL": {
+    "ADDRESS": "Address",
+    "APPLY": "Apply",
+    "CALL": "Call",
+    "CANCEL": "Dismiss",
+    "CHANGE_REQUESTED": "Change requested",
+    "CLEAR": "Clear",
+    "CLIENT": "Client",
+    "CLOSE": "Close",
+    "COMMUNICATED": "Customer notified",
+    "CONFIRM": "Confirm",
+    "CUSTOMER_ADDRESS": "Customer Address",
+    "DELETE": "Delete",
+    "DETAILS": "Details",
+    "DURATION": "Duration",
+    "EDIT": "Edit",
+    "EMPLOYEE": "Caretaker",
+    "FROM": "from",
+    "FORCE": "Force",
+    "LOADING": "Loading...",
+    "DATA_LOADING": "Loading data...",
+    "HOUR": "hour",
+    "HOURS": "hours",
+    "MARK_ALL_AS_READ": "Mark all as read",
+    "MINUTES": "minutes",
+    "MAIL": "Email",
+    "MOBILE": "Mobile",
+    "NAME": "Name",
+    "NO": "no",
+    "NO_NOTIFICATIONS": "No notifications",
+    "NOAH_ADDRESS": "NOAH Address",
+    "NOT_COMMUNICATED": "Client not notified",
+    "NOT_SPECIFIED": "Not specified",
+    "NOTIFICATIONS_POPOVER_TITLE": "Messages",
+    "PHONE": "Telephone",
+    "READ": "Read",
+    "REASON": "Reason",
+    "REASON_PLACEHOLDER": "Fill in a reason here.",
+    "REQUEST_BY_CUSTOMER": "Requested by customer?",
+    "ROUTE": "Route",
+    "SAVE": "Save",
+    "SUBMIT": "Submit",
+    "TO": "to",
+    "VALIDATE": "Validate",
+    "YES": "yes"
+  },
+  "HELP_MENU": {
+    "EMERGENCY_SERVICES": "Call emergency services",
+    "IT": "Call IT help desk",
+    "PERMANENCE": "Call permanence"
+  },
+  "MENU": {
+    "AGENDA": "My agenda",
+    "CLIENT_AGENDA": "Client agenda",
+    "EXPENSES": "Expenses & kilometers",
+    "HELP": "I need help",
+    "LOGOUT": "Sign out",
+    "SETTINGS": "Settings",
+    "TEAM_AGENDA": "Team agenda"
+  },
+  "ROSTER_DISTURBANCE": {
+    "TYPE_PLACEHOLDER": "Type of roster disturbance"
+  },
+  "SESSION_STATUS": {
+    "CHANGED": "Changed",
+    "DEFINITE": "Planned",
+    "DELETE_REQUEST_PENDING": "Delete requested",
+    "LOCKED": "Locked for editing",
+    "NEW": "New",
+    "REQUEST_PENDING": "Change requested",
+    "TRAVEL_REQUEST_PENDING": "Travel requested",
+    "VALIDATED": "Validated"
+  },
+  "TRANSPORT_TYPES": {
+    "PLACEHOLDER": "Transport type",
+    "BROMFIETS": "(Motor)cycle",
+    "AUTO": "Car",
+    "CARPOOL": "Carpool"
+  },
+  "SESSION_TYPE": {
+    "AFWEZIGHEID": "Absence",
+    "HULPBEURT": "Care session",
+    "MEELOPERTAAK": "Internship task",
+    "NOAH": "NOAH",
+    "NOAH_VERVOER": "NOAH transportation",
+    "OPEN_UUR": "Open hour",
+    "OVERIGE_HULPBEURT": "Other assistance",
+    "REISTIJD": "Travel time",
+    "VERVOER": "Transportation",
+    "NOAH_KLANT": "Noah appointment"
+  },
+  "SETTINGS_PAGE": {
+    "LANGUAGE_LABEL": "Language",
+    "NUMBER_PERMANENCE_LABEL": "Number permanence",
+    "NUMBER_PERMANENCE_PLACEHOLDER": "05 555 55 55",
+    "SELECT_LANGUAGE": "Select language",
+    "SUCCESSFULLY_SAVED": "Settings saved",
+    "TITLE": "Settings"
+  },
+  "TEAM_PAGE": {
+    "CHOOSE_TEAM_MEMBERS_PLACEHOLDER": "Select",
+    "ENTIRE_TEAM": "Entire team",
+    "PICK_TEAM_MEMBERS": "Pick team members",
+    "TITLE": "TEAM AGENDA"
+  },
+  "TRAVEL_TIME": {
+    "BEGIN": "Begin",
+    "DURATION": "Duration",
+    "EDIT_BEGIN": "Edit begin",
+    "EDIT_BEGIN_PLACEHOLDER": "Select",
+    "EDIT_DURATION": "Edit duration",
+    "EDIT_DURATION_PLACEHOLDER": "0 minutes",
+    "END": "End",
+    "ENTER_TRAVEL_TIME": "Enter your travel time",
+    "TITLE": "Enter travel time",
+    "TRAVEL_TIME": "Travel time",
+    "TRAVEL_TIME_FOR": "Travel time for"
+  },
+  "VALIDATE_ALL": {
+    "CONFIRM": "Validate sessions",
+    "NOT_VALIDATABLE": "Not validatable",
+    "CHECK_OVERLAPPING": "Check if overlapping",
+    "OVERLAPPING_ABSENCE": "Overlaps with absence",
+    "OVERLAPPING_THIS_ABSENCE": "This absence overlaps with other session",
+    "OVERLAPPING_ABSENCE_MESSAGE": "The following items can be validated but overlap with an absence, confirm to validate:\n",
+    "END": "End: ",
+    "START": "Start: ",
+    "SUBTITLE": "The following items will be submitted for validation:",
+    "TITLE": "Validate all"
+  },
+  "VALIDATE": {
+    "AFWEZIGHEID": "Validate absence",
+    "HULPBEURT": "Validate session",
+    "OVERIGE_HULPBEURT": "Validate session",
+    "REISTIJD": "Validate travel",
+    "NOAH": "Validate NOAH session",
+    "MEELOPER_TAAK": "Validate session"
+  },
+  "EDIT": {
+    "AFWEZIGHEID": "Edit absence",
+    "HULPBEURT": "Edit session",
+    "OVERIGE_HULPBEURT": "Edit session",
+    "REISTIJD": "Edit travel",
+    "NOAH": "Edit NOAH session",
+    "MEELOPER_TAAK": "Edit session"
+  }
+}

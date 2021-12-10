@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/menu/calendar" (click)="dismiss()"></ion-back-button>
+        </ion-buttons>
+        <ion-title translate="DISTANCE.TITLE"></ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal ion-padding-vertical">
+    <div class="content-container">
+        <div class="travel-distance-bubble ion-padding">
+            <div class="ion-margin-bottom"><strong>{{day | date : 'EEEE, dd.MM.yy'}}</strong></div>
+            <!--<small class="travel-distance-bubble__values">
+                <span class="travel-distance-bubble__value">
+                    <strong translate="DISTANCE.KMS_SHOPPING"></strong>
+                    <span id="shopping-value">{{values.shopping ? values.shopping + ' km' : '0 km'}}</span>
+                </span>
+            </small>-->
+            <small class="travel-distance-bubble__values">
+                <span class="travel-distance-bubble__value" *ngFor="let t of types">
+                    <strong [translate]="'DISTANCE.KMS_' + t"></strong>
+                    <span id="{{t}}-value">
+                        {{ values[t] ? values[t] + ' km' : '0 km'}}
+                    </span>
+                </span>
+            </small>
+        </div>
+        <h3 translate="DISTANCE.ENTER_KMS"></h3>
+        <ion-item lines="none">
+            <ion-label color="primary" [translate]="'DISTANCE.TYPE_PLACEHOLDER'"></ion-label>
+            <ion-select [(ngModel)]="type" name="type-input" id="type-input">
+                <ion-select-option *ngFor="let t of types" [value]="t">
+                    <span [translate]="'DISTANCE.EDIT_'+t"></span>
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="type" class="ion-padding-bottom">
+            <ion-label color="primary" [translate]="'DISTANCE.AMOUNT_PLACEHOLDER'"></ion-label>
+            <ion-input (ionFocus)="fieldFocus()" slot="end" class="ion-text-end"
+                       [placeholder]="'DISTANCE.AMOUNT_PLACEHOLDER' | translate"
+
+                       type="number" [(ngModel)]="values[type]" #distanceInput name="distance-input"
+                       id="distance-input"></ion-input>
+        </ion-item>
+
+        <div class="button-group ion-padding-top">
+            <ion-button color="light"
+                        (click)="dismiss()"
+                        translate="GENERAL.CANCEL"></ion-button>
+
+            <ion-button color="primary"
+                        id="confirm-button"
+                        (click)="submit()"
+                        translate="GENERAL.CONFIRM"></ion-button>
+        </div>
+    </div>
+
+</ion-content>

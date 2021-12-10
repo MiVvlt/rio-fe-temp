@@ -1,0 +1,85 @@
+
+.calendar-bubble__comment {
+  padding-top: 10px;
+}
+
+.ion-margin-vertical {
+  padding-left: 10px;
+}
+
+
+.phone {
+  flex: 1;
+
+  &__title {
+    margin-bottom: 5px;
+    color: var(--ion-color-secondary);
+    font-size: 14px;
+  }
+
+  &__value {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.address {
+  flex: 1;
+  display: inline-flex;
+  align-content: center;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 5px;
+    color: var(--ion-color-secondary);
+    font-size: 14px;
+  }
+
+  &__street,
+  &__city {
+    font-size: 90%;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__city {
+    margin-bottom: 20px;
+  }
+}
+
+.contact-person, .session-details {
+  flex: 1;
+  display: inline-flex;
+  align-content: center;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 5px;
+    color: var(--ion-color-secondary);
+    font-size: 14px;
+  }
+
+  &__value {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.session-details {
+  &__value {
+    margin-bottom: 0;
+  }
+}
+
+.contact-title {
+  margin: 0;
+  padding: 0;
+}
+
+
+.detail-button {
+  display: flex;
+  margin-right: 10px;
+}

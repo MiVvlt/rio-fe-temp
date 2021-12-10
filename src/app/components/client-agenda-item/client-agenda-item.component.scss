@@ -1,0 +1,42 @@
+.appointment {
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  min-height: 60px;
+
+  .event-item-title{
+    display: flex;
+  }
+
+  &--MEDICAL {
+    background-color: var(--ion-color-medical);
+    color: var(--ion-color-medical-contrast);
+  }
+
+  &--CARE {
+    background-color: var(--ion-color-care);
+    color: var(--ion-color-care-contrast);
+  }
+
+  &--VALIDATED {
+    background-color: var(--ion-color-tertiary) !important;
+    * {
+      color: var(--ion-color-tertiary-contrast);
+    }
+  }
+
+  .care-giver {
+    flex: 1;
+  }
+
+  .care-date {
+  }
+
+  .session-type {
+    flex: 1;
+  }
+
+  .session-duration {
+  }
+
+}

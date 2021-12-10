@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/menu/calendar" id="cancel-button" (click)="cancel()"></ion-back-button>
+        </ion-buttons>
+        <ion-title translate="VALIDATE_ALL.TITLE"></ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="content-container">
+        <ion-item lines="none">
+            <h4 translate="VALIDATE_ALL.SUBTITLE"></h4>
+        </ion-item>
+        <ion-list>
+            <ion-item *ngFor="let item of unvalidatedItems">
+                <ion-label>
+
+                    <h5>
+                        <span id="validate-all-item__title">
+                            {{ item.getLabel() ? item.getLabel() : ('SESSION_TYPE.' + item.type) | translate }}
+                        </span>
+                        <small id="absence-type" class="pl-1" *ngIf="item.type === 'AFWEZIGHEID'">
+                            ({{item.comment}})
+                        </small>
+                    </h5>
+                    <p *ngIf="item.overlapping && !item.overlappingAbsence">
+                        <strong>
+                            <ion-text color="danger" translate="VALIDATE_ALL.NOT_VALIDATABLE" ></ion-text>
+                        </strong>
+                        <small class="ml-1">
+                            <ion-text color="danger">
+                                (<span translate="VALIDATE_ALL.CHECK_OVERLAPPING"></span>)
+                            </ion-text>
+                        </small>
+
+                    </p>
+
+                    <p *ngIf="item.overlappingAbsence && item.type !== 'AFWEZIGHEID'">
+                        <strong>
+                            <ion-text color="warning" translate="VALIDATE_ALL.OVERLAPPING_ABSENCE" ></ion-text>
+                        </strong>
+                    </p>
+
+                    <p *ngIf="item.overlappingAbsence && item.type === 'AFWEZIGHEID'">
+                        <strong>
+                            <ion-text color="warning" translate="VALIDATE_ALL.OVERLAPPING_THIS_ABSENCE" ></ion-text>
+                        </strong>
+                    </p>
+
+                    <p>
+                        <strong translate="VALIDATE_ALL.START"></strong>
+                        {{item.start | date: 'mediumDate'}} {{item.start | date: 'HH:mm'}}
+                    </p>
+                    <p>
+                        <strong translate="VALIDATE_ALL.END"></strong>
+                        {{item.end | date: 'mediumDate'}} {{item.end | date: 'HH:mm'}}
+                    </p>
+                </ion-label>
+                <ion-item lines="none">
+                    <ion-checkbox [(ngModel)]="item.toValidate"></ion-checkbox>
+                </ion-item>
+            </ion-item>
+        </ion-list>
+
+        <div class="confirm-button-group">
+            <ion-button id="submit-button" color="primary" (click)="confirm()"
+                        translate="VALIDATE_ALL.CONFIRM"></ion-button>
+        </div>
+    </div>
+</ion-content>
+

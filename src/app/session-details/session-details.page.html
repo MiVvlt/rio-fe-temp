@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{calendarEvent?.client?.fullName}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-item lines="none">
+            <div class="session-details">
+                <h4 class="session-details__title" translate="CALENDAR_ITEM.NEEDS_DESCRIPTION"></h4>
+                <p class="session-details__value">{{calendarEvent?.sessionInfo?.requirement ? calendarEvent?.sessionInfo?.requirement : ('GENERAL.NOT_SPECIFIED' | translate)}}</p>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="session-details">
+                <h4 class="session-details__title" translate="CALENDAR_ITEM.CARE_GOAL"></h4>
+                <p class="session-details__value">{{calendarEvent?.sessionInfo?.careGoal ? calendarEvent?.sessionInfo?.careGoal : ('GENERAL.NOT_SPECIFIED' | translate)}}</p>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="session-details">
+                <h4 class="session-details__title" translate="CALENDAR_ITEM.CARETAKER_ATTITUDE"></h4>
+                <p class="session-details__value">{{calendarEvent?.sessionInfo?.attitude ? calendarEvent?.sessionInfo?.attitude : ('GENERAL.NOT_SPECIFIED' | translate)}}</p>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="session-details">
+                <h4 class="session-details__title" translate="CALENDAR_ITEM.REMARKS"></h4>
+                <p class="session-details__value">{{calendarEvent?.sessionInfo?.remarks ? calendarEvent?.sessionInfo?.remarks : ('GENERAL.NOT_SPECIFIED' | translate)}}</p>
+            </div>
+        </ion-item>
+<!--        <ion-item lines="none">-->
+<!--            <div class="session-details">-->
+<!--                <h4 class="session-details__title" translate="CALENDAR_ITEM.TASKS"></h4>-->
+<!--                <p class="session-details__value">{{calendarEvent?.sessionInfo?.tasks ? calendarEvent?.sessionInfo?.tasks : ('GENERAL.NOT_SPECIFIED' | translate)}}</p>-->
+<!--            </div>-->
+<!--        </ion-item>-->
+    </ion-list>
+
+</ion-content>

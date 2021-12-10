@@ -1,0 +1,301 @@
+<ion-header *ngIf="calendarEvent">
+  <ion-toolbar [color]="'primary'">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title
+      *ngIf="calendarEvent?.type === 'HULPBEURT' || calendarEvent?.type === 'NOAH_VERVOER'"
+      >{{calendarEvent?.client?.fullName}}</ion-title
+    >
+    <ion-title
+      *ngIf="calendarEvent?.type !== 'HULPBEURT' && calendarEvent?.type !== 'NOAH_VERVOER'"
+      >{{('SESSION_TYPE.' + calendarEvent?.type) | translate}}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="calendarEvent">
+  <ion-item class="ion-no-margin ion-margin-vertical">
+    <app-agenda-item
+      style="width: 100%;"
+      [sessionEvent]="calendarEvent"
+      [showReasonChanged]="true"
+      [noActions]="true"
+      [showDuration]="true"
+      [showDate]="true"
+    ></app-agenda-item>
+  </ion-item>
+
+  <ion-button
+    *ngIf="calendarEvent?.showDetailsButton"
+    class="ion-margin-vertical detail-button"
+    (click)="showSessionDetails()"
+    >{{'CALENDAR_ITEM.SHOW_DETAILS_BUTTON' | translate}}
+  </ion-button>
+
+  <ion-item
+    *ngIf="calendarEvent?.followerTasks?.length"
+    lines="none"
+    class="ion-margin-top"
+  >
+    <h4 class="contact-title">
+      {{('CALENDAR_ITEM.MEELOPER_TITLE') | translate}}
+    </h4>
+  </ion-item>
+
+  <ion-list
+    *ngIf="calendarEvent?.followerTasks?.length"
+    class="ion-margin-bottom"
+  >
+    <ion-item
+      class="ion-margin-horizontal"
+      *ngFor="let item of calendarEvent?.followerTasks"
+    >
+      <strong style="margin-right: auto;"
+        >{{'CALENDAR_ITEM.MEELOPER_TYPE.' + item.role | translate}}</strong
+      >
+      <p>{{item.name}}</p>
+    </ion-item>
+  </ion-list>
+
+  <div
+    class="ion-margin-top"
+    *ngIf="calendarEvent?.type !== 'OPEN_UUR' &&
+                calendarEvent?.type !== 'REISTIJD' && calendarEvent?.type !== 'AFWEZIGHEID'"
+  >
+    <h4 class="contact-title">
+      <span class="ion-padding-horizontal"
+        >{{('CALENDAR_ITEM.CONTACT_INFO') | translate}}</span
+      >
+    </h4>
+    <ion-list>
+      <ion-item *ngIf="calendarEvent?.type === 'NOAH_VERVOER'">
+        <div class="address">
+          <h4 class="address__title">{{'GENERAL.ADDRESS' | translate}}</h4>
+          <p class="address__street">
+            {{calendarEvent?.client?.street}} {{calendarEvent?.client?.number}}
+            <span *ngIf="calendarEvent?.client?.addition?.length"
+              >/ {{calendarEvent?.client?.addition}}
+            </span>
+          </p>
+          <p class="address__city">
+            {{calendarEvent?.client?.postalCode}}
+            {{calendarEvent?.client?.city}}
+          </p>
+        </div>
+
+        <a [href]="sanitizer.bypassSecurityTrustUrl(calendarEvent?.geoUrl)">
+          <ion-button color="primary" size="medium">
+            <ion-icon class="prc-1" icon="navigate"></ion-icon>
+            {{'GENERAL.ROUTE' | translate}}
+          </ion-button>
+        </a>
+      </ion-item>
+
+      <ion-item
+        *ngIf="calendarEvent?.useDeviatingAddress === true  && calendarEvent?.type !== 'NOAH_VERVOER'"
+      >
+        <div class="address">
+          <ion-label class="address__title"
+            >{{'GENERAL.ADDRESS' | translate}}</ion-label
+          >
+          <p class="address__street">
+            {{calendarEvent?.client?.street || ''}}
+            {{calendarEvent?.client?.number || ''}}
+            <span *ngIf="calendarEvent?.client?.addition?.length"
+              >/ {{calendarEvent?.client?.addition}}
+            </span>
+          </p>
+          <p class="address__city">
+            {{calendarEvent?.postalCode || ''}} {{calendarEvent?.city || '' }}
+          </p>
+        </div>
+
+        <a
+          *ngIf="calendarEvent?.geoUrl"
+          [href]="sanitizer.bypassSecurityTrustUrl(calendarEvent?.geoUrl)"
+        >
+          <ion-button color="primary" size="medium">
+            <ion-icon class="prc-1" icon="navigate"></ion-icon>
+            {{'GENERAL.ROUTE' | translate}}
+          </ion-button>
+        </a>
+      </ion-item>
+
+      <ion-item
+        *ngIf="calendarEvent?.useDeviatingAddress === false  &&
+                                (calendarEvent?.type !== 'NOAH_VERVOER'
+                                && calendarEvent?.type !== 'AFWEZIGHEID'
+                                && calendarEvent?.type != 'REISTIJD')"
+      >
+        <div class="address">
+          <h4 class="address__title">{{'GENERAL.ADDRESS' | translate}}</h4>
+          <p class="address__street">
+            {{calendarEvent?.client?.street || '' }}
+            {{calendarEvent?.client?.number || '' }}
+            <span *ngIf="calendarEvent?.client?.addition?.length"
+              >/ {{calendarEvent?.client?.addition || ''}}
+            </span>
+          </p>
+          <p class="address__city">
+            {{calendarEvent?.client?.postalCode || '' }}
+            {{calendarEvent?.client?.city || '' }}
+          </p>
+        </div>
+
+        <a
+          *ngIf="calendarEvent?.client?.geoUrl"
+          [href]="sanitizer.bypassSecurityTrustUrl(calendarEvent?.client?.geoUrl)"
+        >
+          <ion-button color="primary" size="medium">
+            <ion-icon class="prc-1" icon="navigate"></ion-icon>
+            {{'GENERAL.ROUTE' | translate}}
+          </ion-button>
+        </a>
+      </ion-item>
+
+      <div *ngFor="let contactData of calendarEvent?.client?.contactData">
+        <ion-item (click)="call(contactData?.value)">
+          <div class="phone">
+            <h4
+              *ngIf="contactData?.contactType === 'TELEPHONE_HOME'"
+              class="phone__title"
+            >
+              {{'GENERAL.PHONE' | translate}}
+            </h4>
+            <h4
+              *ngIf="contactData?.contactType === 'MOBILE'"
+              class="phone__title"
+            >
+              {{'GENERAL.MOBILE' | translate}}
+            </h4>
+            <h4
+              *ngIf="contactData?.contactType === 'EMAIL'"
+              class="phone__title"
+            >
+              {{'GENERAL.MAIL' | translate}}
+            </h4>
+
+            <p class="phone__value">{{contactData?.value}}</p>
+          </div>
+
+          <ion-button
+            *ngIf="['MOBILE', 'TELEPHONE_HOME'].indexOf(contactData?.contactType) !== -1"
+            color="primary"
+            size="medium"
+            (click)="call(contactData?.value)"
+          >
+            <ion-icon class="prc-1" icon="call"></ion-icon>
+            {{'GENERAL.CALL' | translate}}
+          </ion-button>
+
+          <a
+            *ngIf="['MOBILE', 'TELEPHONE_HOME'].indexOf(contactData?.contactType) === -1"
+            href="{{calendarEvent.client.getEmailUrl(contactData?.value)}}"
+          >
+            <ion-button color="primary" size="medium">
+              <ion-icon class="prc-1" icon="mail"></ion-icon>
+              {{'GENERAL.MAIL' | translate}}
+            </ion-button>
+          </a>
+        </ion-item>
+
+        <ion-item *ngIf="contactData?.comment">
+          <div class="contact-person">
+            <h4
+              class="contact-person__title"
+              [translate]="'CALENDAR_ITEM.CONTACT_COMMENT'"
+            ></h4>
+            <p class="contact-person__value">
+              {{contactData?.comment ? contactData?.comment : '-'}}
+            </p>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+
+  <div
+    *ngIf="calendarEvent?.client?.contactPersons &&
+                calendarEvent?.client?.contactPersons.length &&
+                calendarEvent?.type !== 'REISTIJD'"
+  >
+    <h4 class="contact-title">
+      <span class="ion-padding-horizontal"
+        >{{('CALENDAR_ITEM.CONTACT_PERSON') | translate}}</span
+      >
+    </h4>
+
+    <div *ngFor="let contact of calendarEvent?.client?.contactPersons">
+      <ion-list>
+        <ion-item>
+          <div class="contact-person">
+            <h4 class="contact-person__title" translate="GENERAL.NAME"></h4>
+            <p class="contact-person__value">{{contact?.fullName}}</p>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div class="contact-person">
+            <h5
+              class="contact-person__title"
+              translate="CALENDAR_ITEM.RELATIONSHIP_WITH_CLIENT"
+            ></h5>
+            <p class="contact-person__value">{{contact?.relationship}}</p>
+          </div>
+        </ion-item>
+
+        <div *ngFor="let contactData of contact?.contactData">
+          <ion-item>
+            <div class="contact-person">
+              <h4
+                *ngIf="contactData?.contactType === 'TELEPHONE_HOME'"
+                class="contact-person__title"
+                translate="CALENDAR_ITEM.CONTACT_PHONE"
+              ></h4>
+              <h4
+                *ngIf="contactData?.contactType === 'MOBILE'"
+                class="contact-person__title"
+                translate="CALENDAR_ITEM.CONTACT_MOBILE"
+              ></h4>
+              <h4
+                *ngIf="['MOBILE', 'TELEPHONE_HOME'].indexOf(contactData?.contactType) === -1"
+                class="contact-person__title"
+                translate="CALENDAR_ITEM.CONTACT_EMAIL"
+              ></h4>
+              <p class="contact-person__value">{{contactData?.value}}</p>
+            </div>
+            <ion-button
+              *ngIf="['MOBILE', 'TELEPHONE_HOME'].indexOf(contactData?.contactType) !== -1"
+              color="primary"
+              size="medium"
+              (click)="call(contactData?.value)"
+            >
+              <ion-icon class="prc-1" icon="call"></ion-icon>
+              {{'GENERAL.CALL' | translate}}
+            </ion-button>
+
+            <a
+              *ngIf="['MOBILE', 'TELEPHONE_HOME'].indexOf(contactData?.contactType) === -1"
+              href="{{calendarEvent.client.getEmailUrl(contactData?.value)}}"
+            >
+              <ion-button color="primary" size="medium">
+                <ion-icon class="prc-1" icon="mail"></ion-icon>
+                {{'GENERAL.MAIL' | translate}}
+              </ion-button>
+            </a>
+          </ion-item>
+
+          <ion-item *ngIf="contactData?.comment">
+            <div class="contact-person">
+              <h4
+                class="contact-person__title"
+                translate="CALENDAR_ITEM.CONTACT_COMMENT"
+              ></h4>
+              <p class="contact-person__value">
+                {{contactData?.comment ? contactData?.comment : '-'}}
+              </p>
+            </div>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

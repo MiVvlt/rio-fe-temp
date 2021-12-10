@@ -1,0 +1,28 @@
+.week-selector {
+  width: 100%;
+  background-color: var(--ion-color-absence);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  &__last, &__next {
+    cursor: pointer;
+    font-size: 30px;
+
+  }
+
+  &__last {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
+  &__next {
+    margin-right: auto;
+    margin-left: 10px;
+  }
+
+  &__text {
+    padding-bottom: 8px;
+  }
+
+}

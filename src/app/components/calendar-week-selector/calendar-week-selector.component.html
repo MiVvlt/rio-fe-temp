@@ -1,0 +1,11 @@
+<div class="calendar__current-week">
+            <span *ngIf="showHandles" class="calendar__current-week__last-week-toggle" appDebounceClick (debounceClick)="emitDebounceLastWeekClicked()" (click)="setWeek(false)">
+                <ion-icon icon="arrow-dropleft"></ion-icon></span>
+  <span class="calendar__current-week__text">
+                {{getWeekLabel() | translate}}, {{this.viewWeek[0].start |date : 'MMMM'}}
+            </span>
+  <span *ngIf="showHandles" class="calendar__current-week__next-week-toggle"
+        appDebounceClick (debounceClick)="emitDebounceNextWeekClicked()"
+        (click)="setWeek(true)"><ion-icon
+          icon="arrow-dropright"></ion-icon></span>
+</div>

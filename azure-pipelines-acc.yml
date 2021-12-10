@@ -1,0 +1,42 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+pool: JWorks-frontend2
+
+steps:
+
+# Download a secure file to the agent machine
+- task: DownloadSecureFile@1
+  name: google_services_json # The name with which to reference the secure file's path on the agent, like $(mySecureFile.secureFilePath)
+  inputs:
+    secureFile: google-services-acc.json # The file name or GUID of the secure file
+
+- script: |
+    cp $(google_services_json.secureFilePath) google-services.json
+  displayName: 'Copy secret file'
+
+- script: |
+    sed 's/be.ordina.rio.app.dev/be.ordina.rio.app.acc/g' config.xml > config-2.xml
+    mv config-2.xml config.xml
+  displayName: 'Init config.xml'
+
+- script: |
+    bash prepare-resources.sh acc
+  displayName: 'Prepare resources'
+
+- script: |
+    npm install
+    SENTRY_SKIP_AUTO_RELEASE=true ionic cordova build android --release --configuration acc
+  displayName: 'Build apk'
+
+- script: |
+    cp platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk $(Build.ArtifactStagingDirectory)/
+  displayName: 'Copying staging files to staging directory'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: dev
+  displayName: 'Publishing staging directory'

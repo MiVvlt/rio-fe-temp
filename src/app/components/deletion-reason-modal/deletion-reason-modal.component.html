@@ -1,0 +1,28 @@
+<ion-content>
+    <div class="modal-content">
+        <h4>{{message}}</h4>
+        <ion-item>
+            <ion-label position="floating" translate="GENERAL.REQUEST_BY_CUSTOMER"></ion-label>
+            <ion-checkbox rows="4" [(ngModel)]="customerRequested"></ion-checkbox>
+            <ion-label position="floating" translate="GENERAL.REASON"></ion-label>
+            <ion-textarea rows="8" [(ngModel)]="reason" required></ion-textarea>
+        </ion-item>
+    </div>
+</ion-content>
+<ion-footer>
+    <div class="button-group" slot="end">
+        <ion-button color="light"
+                    class="ion-margin"
+                    id="cancel-button"
+                    (click)="dismiss()"
+                    translate="GENERAL.CANCEL"></ion-button>
+        <ion-button color="primary"
+                    id="confirm-button"
+                    [disabled]="!reason"
+                    class="ion-margin"
+                    (click)="submit()"
+                    translate="GENERAL.CONFIRM"></ion-button>
+
+    </div>
+
+</ion-footer>

@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-menu-button (click)="showMenu()"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{'TEAM_PAGE.TITLE' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-no-margin">
+    <ion-card class="ion-no-margin">
+        <ion-card-header class="ion-no-margin">
+            <ion-card-title class="ion-no-margin">
+                <h5 class="ion-no-margin" translate="TEAM_PAGE.PICK_TEAM_MEMBERS"></h5>
+            </ion-card-title>
+            <ion-item (click)="checkBoxListVisible = !checkBoxListVisible"
+                      class="checkbox-placeholder ion-no-margin ion-no-padding">
+                <span *ngIf="masterCheck" class="checkbox-placeholder-entire">
+                    Entire team
+                </span>
+                <span *ngIf="!getCheckedCheckboxes().length" class="checkbox-placeholder-entire"
+                      translate="TEAM_PAGE.PICK_TEAM_MEMBERS"></span>
+                <span *ngIf="!masterCheck" class="checkbox-placeholder-values">
+                    <span class="checkbox-placeholder-value" *ngFor="let i of getCheckedCheckboxes()"><span
+                            *ngIf="i.isChecked">{{i.name}}</span></span>
+                </span>
+                <span class="checkbox-placeholder-icon"><ion-icon icon="arrow-dropdown"></ion-icon></span>
+            </ion-item>
+
+            <ion-list *ngIf="checkBoxListVisible" class="checkbox-value-list">
+                <ion-item>
+                    <ion-label><strong>Entire Team</strong></ion-label>
+                    <ion-checkbox slot="end"
+                                  [(ngModel)]="masterCheck"
+                                  [indeterminate]="isIndeterminate"
+                                  (click)="checkMaster($event)"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            <ion-list *ngIf="checkBoxListVisible">
+                <ion-item *ngFor="let item of checkBoxList">
+                    <ion-label>{{item.name}}</ion-label>
+                    <ion-checkbox slot="end"
+                                  [(ngModel)]="item.isChecked"
+                                  (ionChange)="checkEvent()"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            <ion-item *ngIf="checkBoxListVisible" lines="none">
+                <ion-buttons class="checkbox-buttons ion-margin-top">
+                    <ion-button translate="GENERAL.APPLY" (click)="teamMembersChanged()"></ion-button>
+                    <ion-button  translate="GENERAL.CANCEL" (click)="checkBoxListVisible = false"></ion-button>
+                </ion-buttons>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding ion-no-margin">
+
+            <div class="day" *ngFor="let item of appointments">
+                <div class="day-label">
+                    <div class="day-label__value">{{item.date | date : 'EEEE dd MMM '}}</div>
+                    <div class="day-label__divider"></div>
+                </div>
+
+                <div *ngFor="let appointment of item.appointments"
+                     class="appointment appointment--{{appointment.careType}}">
+                    <div class="care-giver">{{appointment.careGiver}}
+                        <div><small class="care-client">Client: {{appointment.clientInfo?.name}}</small></div>
+                    </div>
+
+                    <div class="care-date">
+                        {{appointment.start | date : 'HH:mm'}} - {{appointment.end | date : 'HH:mm'}}
+                    </div>
+                </div>
+            </div>
+
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>

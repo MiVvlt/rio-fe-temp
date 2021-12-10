@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/menu/calendar" (click)="dismiss()"></ion-back-button>
+        </ion-buttons>
+        <ion-title translate="TRAVEL_TIME.TITLE"></ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal ion-padding-vertical">
+    <div class="content-container">
+        <div class="travel-time-bubble ion-padding">
+            <div class="ion-margin-bottom">
+                <strong>{{'TRAVEL_TIME.TRAVEL_TIME_FOR' | translate}} {{day | date: 'mediumDate' }} </strong>
+            </div>
+            <small class="travel-time-bubble__values">
+                <span class="travel-time-bubble__value">
+                    <strong translate="TRAVEL_TIME.BEGIN"></strong> {{requestedStart | date: 'HH:mm' }}
+                </span>
+                <span class="travel-time-bubble__value">
+                    <strong translate="TRAVEL_TIME.END"></strong> {{requestedEnd | date: 'HH:mm'}}
+                </span>
+            </small>
+        </div>
+
+        <h3 translate="TRAVEL_TIME.ENTER_TRAVEL_TIME"></h3>
+
+        <app-duration-input [start]="requestedStart"
+                            [end]="requestedEnd"
+                            [fill]="'outline'"
+                            expand="block"
+                            size="default"
+                            translatePlaceholder="TRAVEL_TIME.DURATION"
+                            (change)="durationChanged($event)"
+                            color="primary">
+        </app-duration-input>
+
+        <div class="button-group">
+            <ion-button color="light"
+                        class="ion-margin"
+                        id="cancel-button"
+                        (click)="dismiss()"
+                        translate="GENERAL.CANCEL"></ion-button>
+            <ion-button color="primary"
+                        id="confirm-button"
+                        class="ion-margin"
+                        expand="full" [disabled]="!requestedEnd || !requestedStart"
+                        (click)="submit()"
+                        translate="GENERAL.CONFIRM"></ion-button>
+        </div>
+    </div>
+
+</ion-content>

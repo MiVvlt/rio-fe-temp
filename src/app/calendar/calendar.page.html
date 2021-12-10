@@ -1,0 +1,161 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start" class="menu-button">
+            <ion-icon icon="menu" class="ion-padding-start menu-icon" (click)="showMenu()"></ion-icon>
+        </ion-buttons>
+        <ion-title>{{'CALENDAR_PAGE.TITLE' | translate}}</ion-title>
+        <!--
+        <ion-buttons slot="end">
+            <app-user-menu></app-user-menu>
+        </ion-buttons>
+        -->
+        <ion-buttons *ngIf="isDeviceOnline()" (click)="openNotifications($event)" slot="end">
+            <ion-button>
+                <ion-icon icon="notifications"></ion-icon>
+                <ion-badge [color]="'danger'" slot="end" *ngIf="notificationsAmount">{{notificationsAmount}}</ion-badge>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="refreshEvents($event)">
+        <ion-refresher-content refreshingText="{{'CALENDAR_PAGE.LOADING' | translate}}"></ion-refresher-content>
+    </ion-refresher>
+    <div class="calendar">
+        <ion-header style="background-color: #fff;" slot="fixed">
+            <app-calendar-week-selector [showHandles]="isDeviceOnline()" [viewWeek]="viewWeek"
+                                        [weekChanged]="weekChanged"
+                                        (debounceLastWeekClicked)="onWeekChange($event)"
+                                        (debounceNextWeekClicked)="onWeekChange($event)"
+                                        [viewDate]="viewDate"></app-calendar-week-selector>
+
+            <div class="ion-padding-horizontal calendar__current-week-days">
+
+                <div class="calendar__current-week-days__day" *ngFor="let day of viewWeek"
+                     [ngClass]="{'today': isToday(day.start), 'active': isActive(day.start)}"
+                     (click)="setActiveDay(day.start)">
+
+                    <div class="calendar__current-week-days__day__day-number">
+                        {{day.start | date : 'dd'}}
+                    </div>
+                    <div class="calendar__current-week-days__day__short-day">
+                        {{day.start | date : 'EEE'}}
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="calendar__heading-ruler"></div>
+        </ion-header>
+
+        <div class="calendar-events-content">
+            <ion-item *ngIf="!events?.length">
+                <ion-text class="ion-text-center">{{'CALENDAR_PAGE.NO_PLANNED' | translate}}</ion-text>
+            </ion-item>
+
+            <mwl-calendar-day-view
+                    [viewDate]="viewDate"
+                    [locale]="'nl-BE'"
+                    [events]="events"
+                    [eventTemplate]="eventTemplate"
+                    [refresh]="refresh"
+                    [hourSegmentHeight]="50"
+                    [dayStartHour]="today.start"
+                    [dayEndHour]="today.end"
+            >
+            </mwl-calendar-day-view>
+
+            <div *ngIf="loading" class="loading-container">
+
+                <ion-spinner color="primary"></ion-spinner>
+                <p>{{'CALENDAR_PAGE.LOADING' | translate}}</p>
+
+            </div>
+        </div>
+
+        <ng-template #eventTemplate let-weekEvent="weekEvent">
+            <app-agenda-item [sessionEvent]="weekEvent?.event"
+                             (showDetails)="showEventDetails($event)"
+                             (validateEvent)="validateEvent($event)"
+                             [showDuration]="true"
+                             (editEvent)="editEvent($event)"
+                             (editAbsenceEvent)="editAbsenceEvent($event)"
+                             (deleteEvent)="deleteEvent($event)"
+                             (toggleCommunicated)="toggleCommunicated($event)"
+            >
+            </app-agenda-item>
+        </ng-template>
+    </div>
+</ion-content>
+
+<ion-footer>
+
+    <ion-fab *ngIf="isDeviceOnline()" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon icon="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top" class="action-list">
+            <div class="fab-list-item" (click)="submitAll()">
+                <div class="fab-list-item-content">
+                    <div class="list-text">
+                        <ion-label>{{'CALENDAR_PAGE.BUTTONS.SUBMIT_ALL' | translate}}</ion-label>
+                    </div>
+
+                    <ion-fab-button color="light">
+                        <ion-icon color="primary" icon="checkmark"></ion-icon>
+                    </ion-fab-button>
+                </div>
+            </div>
+            <div class="fab-list-item" (click)="addSupplement('distance')">
+                <div class="fab-list-item-content">
+                    <div class="list-text">
+                        <ion-label>{{'CALENDAR_PAGE.BUTTONS.KMS' | translate}}</ion-label>
+                    </div>
+
+                    <ion-fab-button color="light">
+                        <ion-icon color="primary" icon="car"></ion-icon>
+                    </ion-fab-button>
+                </div>
+            </div>
+            <div class="fab-list-item" (click)="openExpensesModal()">
+                <div class="fab-list-item-content">
+                    <div class="list-text">
+                        <ion-label>{{'CALENDAR_PAGE.BUTTONS.EXPENSES' | translate}}</ion-label>
+                    </div>
+
+                    <ion-fab-button color="light">
+                        <ion-icon color="primary" icon="cash"></ion-icon>
+                    </ion-fab-button>
+                </div>
+            </div>
+            <div class="fab-list-item" (click)="addSupplement('travelTime')">
+                <div class="fab-list-item-content">
+                    <div class="list-text">
+                        <ion-label>{{'CALENDAR_PAGE.BUTTONS.TRAVEL_TIME' | translate}}</ion-label>
+                    </div>
+
+                    <ion-fab-button color="light">
+                        <ion-icon color="primary" icon="clock"></ion-icon>
+                    </ion-fab-button>
+                </div>
+            </div>
+        </ion-fab-list>
+    </ion-fab>
+
+    <ion-button *ngIf="isDeviceOnline()" class="mv-2 ml-1" (click)="addSupplement('distance')">
+        <ion-icon icon="car" class="mr-1"></ion-icon>
+        <span *ngIf="!distanceLoading">
+        {{kms}} <small style="margin-top: 3px; margin-left: 2px;"><small>Km</small></small>
+        </span>
+        <ion-spinner *ngIf="distanceLoading" style="width:14px;" color="light" name="lines"></ion-spinner>
+    </ion-button>
+    <ion-button *ngIf="isDeviceOnline()" class="mv-2" (click)="openExpensesModal()">
+        <ion-icon icon="cash" class="cash mr-1"></ion-icon>
+        <span *ngIf="!expensesLoading">
+            {{expensesTotal | currency : 'EUR' }}
+        </span>
+        <ion-spinner *ngIf="expensesLoading" style="width:14px;" color="light" name="lines"></ion-spinner>
+    </ion-button>
+
+
+</ion-footer>

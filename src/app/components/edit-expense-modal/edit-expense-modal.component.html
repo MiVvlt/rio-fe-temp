@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/menu/expenses" (click)="cancel()"></ion-back-button>
+        </ion-buttons>
+        <ion-title [translate]="'EXPENSES_PAGE.EDIT'"></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="content-container">
+    <form [formGroup]="expenseForm" (ngSubmit)="submitExpenseForm()">
+
+        <ion-item>
+            <ion-label>{{'EXPENSES.DATE.LABEL' | translate}}</ion-label>
+            <ion-datetime [formControlName]="'date'"
+                          displayFormat="MMM DD, YYYY"
+            ></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{'EXPENSES.TYPES.LABEL' | translate}}</ion-label>
+            <ion-select [placeholder]="'EXPENSES.TYPES.PLACEHOLDER' | translate" (ionChange)="typeChanged()"
+                        [formControlName]="'type'">
+                <ion-select-option *ngFor="let type of expenseTypes" [value]="type">
+                    {{'EXPENSES.TYPES.' + type | translate}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{'EXPENSES.VALUE.LABEL' | translate}}</ion-label>
+            <ion-input #amountInput type="number" slot="end" [placeholder]="'EXPENSES.VALUE.PLACEHOLDER' |translate"
+                       [clearInput]="true"
+                       formControlName="amount"></ion-input>
+        </ion-item>
+
+
+    </form>
+
+    <div class="confirm-button-group">
+        <ion-button id="cancel-button"
+                    color="secondary"
+                    (click)="cancel()"
+                    [translate]="'GENERAL.CANCEL'">
+        </ion-button>
+        <ion-button (click)="submitExpenseForm()"
+                    [disabled]="!expenseForm.valid"
+                    [translate]="'GENERAL.SUBMIT'"
+                    color="primary">
+        </ion-button>
+    </div>
+    </div>
+</ion-content>

@@ -1,0 +1,45 @@
+<div class="notifications-wrapper">
+    <ion-header>
+        <ion-title color="primary">
+            <h4>{{'GENERAL.NOTIFICATIONS_POPOVER_TITLE' | translate}}</h4>
+        </ion-title>
+    </ion-header>
+    <ion-list>
+        <ion-content>
+            <ion-refresher slot="fixed" (ionRefresh)="refreshNotifications($event)">
+                <ion-refresher-content refreshingText="{{'GENERAL.LOADING' | translate}}"></ion-refresher-content>
+            </ion-refresher>
+                <ion-item-sliding *ngFor="let item of notifications" (click)="openItem = item.id">
+                    <ion-item-options side="end">
+                        <ion-item-option color="danger"
+                                         (click)="markRead(item)">{{'GENERAL.READ' | translate}}</ion-item-option>
+                        <ion-item-option color="primary"
+                                         (click)="show(item)">{{'GENERAL.DETAILS' | translate}}</ion-item-option>
+                    </ion-item-options>
+                    <ion-item (click)="show(item)">
+                        <ion-icon icon="notifications" slot="top"></ion-icon>
+                        <ion-label>
+                            <h2>{{item.title}} </h2>
+                            <h5>{{getTime(item.timestamp)}}</h5>
+                            <p class="cut-off">{{item.body}}</p>
+                            <small *ngIf="item.reasonChanged" class="ion-color-light">
+                                <strong>{{'CALENDAR_ITEM.REASON' | translate}}</strong>
+                                {{item.reasonChanged}}
+                            </small>
+                        </ion-label>
+                    </ion-item>
+                </ion-item-sliding>
+                <ion-item *ngIf="!notifications?.length">
+                    <p class="ion-text-center w-100">
+                        {{'GENERAL.NO_NOTIFICATIONS' | translate}}
+                    </p>
+                </ion-item>
+        </ion-content>
+    </ion-list>
+    <ion-footer *ngIf="notifications?.length">
+        <ion-item>
+            <ion-button (click)="markAllAsRead()" color="primary" slot="end">{{'GENERAL.MARK_ALL_AS_READ' | translate}}</ion-button>
+        </ion-item>
+    </ion-footer>
+</div>
+

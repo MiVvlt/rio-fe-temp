@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar [color]="'primary'">
+        <ion-buttons slot="start">
+            <ion-back-button  slot="start"></ion-back-button>
+        </ion-buttons>
+        <ion-title [translate]="'VALIDATE.' + calendarEvent?.type"></ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item class="ion-no-margin ion-margin-vertical">
+        <app-agenda-item style="width: 100%; height: 100%"
+                         [sessionEvent]="calendarEvent"
+                         [showReasonChanged]="true"
+                         [showDuration]="true"
+                         [showDate]="true"
+                         [noActions]="true">
+        </app-agenda-item>
+    </ion-item>
+    <ion-list *ngIf="calendarEvent?.userModified">
+        <ion-item>
+            {{ 'CALENDAR_ITEM.USER_MODIFIED' | translate}}
+        </ion-item>
+    </ion-list>
+
+    <ion-item>
+        <ion-label>{{'ROSTER_DISTURBANCE.TYPE_PLACEHOLDER' | translate}}</ion-label>
+        <ion-select [(ngModel)]="rosterDisturbance">
+            <ion-select-option *ngFor="let item of rosterDisturbanceOptions" [value]="item">{{item}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <div class="confirm-button-group">
+        <ion-button id="cancel-button" color="secondary" (click)="cancel()" translate="GENERAL.CANCEL"></ion-button>
+        <ion-button id="submit-button" color="primary" (click)="submit()" translate="GENERAL.VALIDATE"></ion-button>
+    </div>
+
+
+</ion-content>

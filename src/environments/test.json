@@ -1,0 +1,112 @@
+[
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-06",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-07",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-08",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 5.0,
+    "AUTO": 20.0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-09",
+    "kmShopping": 5.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 20.0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-10",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-11",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-12",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-13",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-14",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  },
+  {
+    "BROMFIETS": 0,
+    "AUTO": 0,
+    "CARPOOL": 0,
+    "MOTO": 0,
+    "TE_VOET": 0,
+    "day": "2021-12-15",
+    "kmShopping": 0.0,
+    "OPENBAAR_VERVOER": 0,
+    "FIETS": 0
+  }
+]

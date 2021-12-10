@@ -1,0 +1,10 @@
+export enum MessageType {
+    PLANNINGPUSH,
+    CHANGEPUSH,
+    LOCK,
+    CHANGEREQUEST,
+    SWITCHPUSH,
+    SWITCHREQUEST,
+    VALIDATE,
+    REFRESH
+}
